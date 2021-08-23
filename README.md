@@ -1,1 +1,8 @@
-# ku-polls
+# KU Polls
+
+A web application for conducting polls at [Kasetsart University](https://www.ku.ac.th).
+
+## [Project Documentation](../../wiki/home)
+
+
+[Vision Statement](../../wili/Vision%20Statement)
