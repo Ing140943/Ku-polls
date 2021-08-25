@@ -2,7 +2,7 @@
 
 A web application for conducting polls at [Kasetsart University](https://www.ku.ac.th).
 
-## Project Documents
+## [Project Documents](https://github.com/Ing140943/ku-polls/wiki)
 
-* [Project Wiki](../../wiki/home)   
-* [Vision Statement](../../wili/Vision%20Statement)
+* [Vision Statement](../../wiki/Vision%20Statement)
+* [Requirements](../../wiki/Requirements%20)
