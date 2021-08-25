@@ -4,7 +4,7 @@ A web application for conducting polls at [Kasetsart University](https://www.ku.
 
 ## Project Documents
 
-This is all related KU poll application document(https://github.com/Ing140943/ku-polls/wiki)
+[This is all related KU poll application document](https://github.com/Ing140943/ku-polls/wiki)
 
 * [Vision Statement](../../wiki/Vision%20Statement)
 * [Requirements](../../wiki/Requirements)
