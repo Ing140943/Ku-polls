@@ -1,7 +1,10 @@
 li a{
-    color: green;
+    font-size: 30px;
+    font-family: FreeMono, monospace;
+    color: blue;
 }
 
 body{
-    background: white url("images/background2.jpg");
+    background: white url("images/background3.jpg");
+    background-size: cover;
 }
