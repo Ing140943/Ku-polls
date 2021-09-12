@@ -4,9 +4,16 @@
 <h1>{{ question.question_text }}</h1>
 
 <ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
+    <table style="width:20%">
+        {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td> = </td>
+            <td> {{ choice.votes }}</td><br>
+        </tr>
+
+        {% endfor %}
+    </table>
 </ul>
 
 <button><a href="{% url 'polls:detail' question.id %}">Vote again?</a></button>
