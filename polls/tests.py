@@ -32,6 +32,46 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+    def test_polls_pass_pub_date(self):
+        """Test that the polls already pass the published date."""
+        published_date = timezone.now()
+        now = timezone.now() + datetime.timedelta(days=1, seconds=1)
+        question = Question(pub_date=published_date, end_date=now)
+        self.assertTrue(question.is_published())
+
+    def test_polls_pass_published_even_pass_the_end_date(self):
+        """Test that the polls already pass the published date."""
+        published_date = timezone.now() - datetime.timedelta(days=1, seconds=1)
+        end = timezone.now()
+        question = Question(pub_date=published_date, end_date=end)
+        self.assertTrue(question.is_published())
+
+    def test_polls_not_published_yet(self):
+        """Test that the polls already pass the published date."""
+        published_date = timezone.now() + datetime.timedelta(days=10, seconds=1)
+        question = Question(pub_date=published_date)
+        self.assertFalse(question.is_published())
+
+    def test_available_to_vote_in_duration(self):
+        """Test that we can vote if we in the duration of polls."""
+        published_date = timezone.now() - datetime.timedelta(days=1, seconds=1)
+        now = timezone.now()
+        question = Question(pub_date=published_date, end_date=now)
+        self.assertTrue(question.can_vote())
+
+    def test_unavailable_to_vote_expired_polls(self):
+        """Test that we can not vote if the polls is expired."""
+        end = timezone.now() - datetime.timedelta(days=1, seconds=1)
+        question = Question(end_date=end)
+        self.assertFalse(question.can_vote())
+
+    def test_can_not_vote_polls_unpublished_yet(self):
+        """Test that the polls already pass the published date."""
+        published_date = timezone.now() + datetime.timedelta(days=1, seconds=1)
+        now = timezone.now()
+        question = Question(pub_date=published_date, end_date=now)
+        self.assertFalse(question.can_vote())
+
 
 def create_question(question_text, days):
     """
