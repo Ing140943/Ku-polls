@@ -1,3 +1,4 @@
+"""This module is about tell the time and date for the polls."""
 import datetime
 
 from django.db import models
@@ -5,11 +6,14 @@ from django.utils import timezone
 
 
 class Question(models.Model):
+    """Creating question with specific option depends on the user."""
+
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     end_date = models.DateTimeField('end dated', default=None, null=True)
 
     def __str__(self):
+        """Represent the text of print function."""
         return self.question_text
 
     def was_published_recently(self):
@@ -18,7 +22,7 @@ class Question(models.Model):
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     def is_published(self):
-        """Check that this poll is published"""
+        """Check that this poll is published."""
         now = timezone.now()
         return now >= self.pub_date
 
@@ -33,9 +37,12 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
+    """Generate the choice fir each questions."""
+
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
     def __str__(self):
+        """Represent the text of print function."""
         return self.choice_text
