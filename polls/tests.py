@@ -54,14 +54,6 @@ class QuestionModelTests(TestCase):
         question = Question(pub_date=published_date)
         self.assertFalse(question.is_published())
 
-    def test_available_to_vote_in_duration(self):
-        """Test that we can vote if we in the duration of polls."""
-        published_date = timezone.now() - \
-            datetime.timedelta(days=1, seconds=1)
-        now = timezone.now()
-        question = Question(pub_date=published_date, end_date=now)
-        self.assertTrue(question.can_vote())
-
     def test_unavailable_to_vote_expired_polls(self):
         """Test that we can not vote if the polls is expired."""
         end = timezone.now() - datetime.timedelta(days=1, seconds=1)
