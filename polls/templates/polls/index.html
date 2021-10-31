@@ -1,5 +1,11 @@
 {% load static %}
 
+{% if user.is_authenticated %}
+   Welcome back, {{ user.username }}
+{% else %}
+<button> <a href="{% url 'login' %}">Please Login</a></button>
+{% endif %}
+
 {% if messages %}
 <ul class="messages">
     {% for msg in messages %}
@@ -25,4 +31,8 @@
         </ul>
 {% else %}
     <p>No polls are available.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}"><button type="button">Logout</button></a> 
 {% endif %}

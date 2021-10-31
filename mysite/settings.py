@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from decouple import config
+import os
 
 __author__ = "Setthanat Kladee"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,7 +48,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +94,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Authentication strategies
+AUTHENTICATION_BACKENDS = [
+    # username/password authentication
+   'django.contrib.auth.backends.ModelBackend',
+]
+LOGIN_REDIRECT_URL = '/polls/'  # or reverse("polls:index")
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
