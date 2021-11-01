@@ -12,3 +12,7 @@ A web application for conducting polls at [Kasetsart University](https://www.ku.
 * [Requirements](../../wiki/Requirements)
 * [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
 * [Iteration 2 Plan](../../wiki/Iteration-2-Plan) 
+
+## Command
+```python3 manage.py migrate```     
+```python3 manage.py loaddata users polls```
