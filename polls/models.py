@@ -1,8 +1,8 @@
 """This module is about tell the time and date for the polls."""
 import datetime
-
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Question(models.Model):
@@ -41,8 +41,27 @@ class Choice(models.Model):
 
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+
+    # votes = models.IntegerField(default=0)
 
     def __str__(self):
         """Represent the text of print function."""
         return self.choice_text
+
+    @property
+    def votes(self) -> int:
+        return Vote.objects.filter(choice=self).count()
+
+
+class Vote(models.Model):
+    """A vote by a user for one choice (answer) to a poll Question."""
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f"Vote by {self.user} for {self.choice.choice_text} on question {self.choice.question} "
