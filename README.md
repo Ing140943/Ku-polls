@@ -13,8 +13,8 @@ A web application for conducting polls at [Kasetsart University](https://www.ku.
 * [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
 * [Iteration 2 Plan](../../wiki/Iteration-2-Plan) 
 
-<<<<<<< HEAD
-## Command
+
+## Command     
 ```python3 manage.py migrate```     
 ```python3 manage.py loaddata users polls```
 =======
@@ -26,4 +26,4 @@ Users provided by the initial data (users.json):
 |-----------|-------------|
 | username     | password    |
 | demo     | demo12345!    |
->>>>>>> f2ee8a2938da195610f765f761c2300df00cdcac
+
